@@ -1,12 +1,40 @@
-import { Controller } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { EntrepriseService } from './entreprise.service';
+import { CreateEntrepriseDto } from './dto/create-entreprise.dto';
+import { UpdateEntrepriseDto } from './dto/update-entreprise.dto';
 
-@Controller()
+@Controller('entreprise')
 export class EntrepriseController {
   constructor(private readonly entrepriseService: EntrepriseService) {}
 
-  //   @Get()
-  //   getHello(): string {
-  //     return this.entrepriseService.getHello();
-  //   }
+  @Post()
+  create(@Body() createEntrepriseDto: CreateEntrepriseDto) {
+    return this.entrepriseService.create(createEntrepriseDto);
+  }
+
+  @Get('search/:search')
+  findOneEntreprise(@Param('search') search: string) {
+    return this.entrepriseService.findOneEntreprise(search);
+  }
+
+  @Patch(':enterpriseNumber')
+  update(
+    @Param('enterpriseNumber') enterpriseNumber: string,
+    @Body() updateEntrepriseDto: UpdateEntrepriseDto,
+  ) {
+    return this.entrepriseService.update(enterpriseNumber, updateEntrepriseDto);
+  }
+
+  @Delete(':enterpriseNumber')
+  remove(@Param('enterpriseNumber') enterpriseNumber: string) {
+    return this.entrepriseService.remove(enterpriseNumber);
+  }
 }
