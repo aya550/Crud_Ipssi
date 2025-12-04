@@ -23,6 +23,7 @@ export class EntrepriseService {
   async findOneEntreprise(search: string) {
     let entreprise = await this.entrepriseRepository.findOne({
       where: { enterpriseNumber: search },
+      // relations: ['activities', 'addresses', 'contacts', 'denominations'],
     });
 
     if (!entreprise) {
