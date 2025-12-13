@@ -9,22 +9,24 @@ import {
 
 @Entity('activity')
 export class Activity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'EntityNumber' })
   entityNumber: number;
 
-  @Column()
+  @Column({ name: 'ActivityGroup' })
   activityGroup: string;
 
-  @Column()
+  @Column({ name: 'NaceVersion' })
   naceVersion: string;
 
-  @Column()
+  @Column({ name: 'NaceCode' })
   naceCode: string;
 
-  @Column()
+  @Column({ name: 'Classification' })
   classification: string;
 
-  @JoinColumn({ name: 'EnterpriseNumber' })
+  @JoinColumn({
+    name: 'EntityNumber',
+  })
   @ManyToOne(() => Entreprise, (entreprise) => entreprise.activities)
   entreprise: Entreprise;
 }

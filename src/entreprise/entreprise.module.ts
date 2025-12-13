@@ -9,6 +9,7 @@ import { Activity } from '../activity/entities/activity.entity';
 import { Branch } from '../branch/entities/branch.entity';
 import { Code } from '../code/entities/code.entity';
 import { Contact } from '../contact/entities/contact.entity';
+import { Etablishment } from '../etablishment/entities/etablishment.entity';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { Contact } from '../contact/entities/contact.entity';
       Branch,
       Code,
       Contact,
+      Etablishment,
     ]),
   ],
   controllers: [EntrepriseController],

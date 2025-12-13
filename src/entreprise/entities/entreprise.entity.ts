@@ -4,6 +4,7 @@ import { Branch } from 'src/branch/entities/branch.entity';
 import { Code } from 'src/code/entities/code.entity';
 import { Contact } from 'src/contact/entities/contact.entity';
 import { denomination } from 'src/denomination/entities/denomination.entity';
+import { Etablishment } from 'src/etablishment/entities/etablishment.entity';
 import {
   Column,
   Entity,
@@ -35,21 +36,45 @@ export class Entreprise {
   @Column({ name: 'StartDate' })
   startDate: string;
 
-  @OneToMany(() => Activity, (activity) => activity.entreprise)
+  @OneToMany(() => Activity, (activity) => activity.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   activities: Activity[];
 
-  @OneToMany(() => Address, (address) => address.entreprise)
+  @OneToMany(() => Address, (address) => address.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   addresses: Address[];
 
-  @OneToMany(() => Branch, (branch) => branch.entreprise)
+  @OneToMany(() => Branch, (branch) => branch.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   branches: Branch[];
 
-  @OneToMany(() => Code, (code) => code.entreprise)
+  @OneToMany(() => Code, (code) => code.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   codes: Code[];
 
-  @OneToMany(() => Contact, (contact) => contact.entreprise)
+  @OneToMany(() => Contact, (contact) => contact.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   contacts: Contact[];
 
-  @OneToMany(() => denomination, (denomination) => denomination.entreprise)
+  @OneToMany(() => denomination, (denomination) => denomination.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
   denominations: denomination[];
+
+  @OneToMany(() => Etablishment, (etablishment) => etablishment.entreprise, {
+    cascade: true,
+    onDelete: 'CASCADE',
+  })
+  etablishments: Etablishment[];
 }

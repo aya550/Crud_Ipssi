@@ -3,19 +3,23 @@ import { Entreprise } from 'src/entreprise/entities/entreprise.entity';
 import { ManyToOne, JoinColumn } from 'typeorm';
 @Entity('denomination')
 export class denomination {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'EntityNumber' })
   entityNumber: string;
 
-  @Column()
+  @Column({ name: 'EntityNumber', primary: true })
+  @Column({ name: 'Language' })
   language: string;
 
-  @Column()
+  @Column({ name: 'TypeOfDenomination' })
   typeOfDenomination: string;
 
-  @Column()
+  @Column({ name: 'Denomination' })
   denomination: string;
 
-  @JoinColumn({ name: 'enterpriseNumber' })
+  @JoinColumn({
+    name: 'EntityNumber',
+    referencedColumnName: 'enterpriseNumber',
+  })
   @ManyToOne(() => Entreprise, (entreprise) => entreprise.denominations)
   entreprise: Entreprise;
 }

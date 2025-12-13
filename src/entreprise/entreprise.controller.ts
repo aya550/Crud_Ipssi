@@ -20,7 +20,12 @@ export class EntrepriseController {
     return this.entrepriseService.create(createEntrepriseDto);
   }
 
-  @Get('search/:search')
+  @Get()
+  findAll() {
+    return this.entrepriseService.findAll();
+  }
+
+  @Get(':search')
   findOneEntreprise(@Param('search') search: string) {
     return this.entrepriseService.findOneEntreprise(search);
   }

@@ -13,7 +13,7 @@ export class Address {
   @PrimaryGeneratedColumn({ name: 'EntityNumber' })
   entityNumber: number;
 
-  @Column({ name: 'TypeOfAdress' })
+  @Column({ name: 'TypeOfAddress' })
   typeOfAdress: string;
 
   @Column({ name: 'CountryNL' })
@@ -22,7 +22,7 @@ export class Address {
   @Column({ name: 'CountryFR' })
   countryFR: string;
 
-  @Column({ name: 'ZipCode' })
+  @Column({ name: 'Zipcode' })
   zipCode: string;
 
   @Column({ name: 'MunicipalityNL' })
@@ -43,13 +43,13 @@ export class Address {
   @Column({ name: 'Box' })
   box: string;
 
-  @Column({ name: 'ExtraAdressInfo' })
-  extraAdressInfo: string;
+  @Column({ name: 'ExtraAddressInfo' })
+  extraAddressInfo: string;
 
   @Column({ name: 'DateStrikingOff' })
   dateStrikingOff: string;
 
-  @JoinColumn({ name: 'EnterpriseNumber' })
+  @JoinColumn({ name: 'EntityNumber' })
   @ManyToOne(() => Entreprise, (entreprise) => entreprise.addresses)
   entreprise: Entreprise;
 }

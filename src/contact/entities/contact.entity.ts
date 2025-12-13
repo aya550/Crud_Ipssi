@@ -9,19 +9,21 @@ import {
 
 @Entity('contact')
 export class Contact {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'EntityNumber' })
   entityNumber: string;
 
-  @Column()
+  @Column({ name: 'EntityContact' })
   entityContact: string;
 
-  @Column()
+  @Column({ name: 'ContactType' })
   contactType: string;
 
-  @Column()
+  @Column({ name: 'Value' })
   value: string;
 
-  @JoinColumn({ name: 'enterpriseNumber' })
+  @JoinColumn({
+    name: 'EntityNumber',
+  })
   @ManyToOne(() => Entreprise, (entreprise) => entreprise.contacts)
   entreprise: Entreprise;
 }
